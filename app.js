@@ -14,31 +14,8 @@ const handlers = {
         this.response.speak('Welcome to {Application Name}');
         this.emit(':responseReady');
     },
-    'PizzaOrder': function(){
-        let filledSlots=delegateSlotCollection.call(this,function(event){
-            let result=false;
-            let slots=event.request.intent.slots;
-            
-            //Slots and confirmation
-             
-            if(slots && event.request.intent.confirmationStatus!="NONE"){
-                result=true;
-            }
-            
-            return result;
-        });
-        
-        if(!filledSlots)return;
-        
-        let slotValues=getSlotValues(filledSlots);
-        
-        console.log(JSON.stringify(slotValues));
-        
-        let speechOutput="Have a nice day";
-        this.response.speak(speechOutput);
-        this.emit(':responseReady');
-    }
-    ,
+    //define your intents here
+    
     'AMAZON.HelpIntent': function () {
         const speechOutput = HELP_MESSAGE;
         const reprompt = HELP_REPROMPT;
