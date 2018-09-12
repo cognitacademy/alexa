@@ -1,10 +1,8 @@
 'use strict';
 const Alexa = require('alexa-sdk');
-const mysql=require('mysql');
+const APP_ID = 'amzn1.ask.skill.61979110-12ee-4c17-a23b-cc845bff407c';
 
-const APP_ID = 'appID here';
-
-const HELP_MESSAGE = 'What can I help you with?';
+const HELP_MESSAGE = 'You can say tell me a space fact, or, you can say exit... What can I help you with?';
 const HELP_REPROMPT = 'What can I help you with?';
 const STOP_MESSAGE = 'Goodbye!';
 
@@ -14,8 +12,29 @@ const handlers = {
         this.response.speak('Welcome to {Application Name}');
         this.emit(':responseReady');
     },
-    //define your intents here
-
+    'IntentName': function(){
+        let filledSlots=delegateSlotCollection.call(this,function(event){
+            let result=false;
+            let slots=event.request.intent.slots;
+            
+            if(slots && event.request.intent.confirmationStatus!="NONE"){
+                result=true;
+            }
+            
+            return result;
+        });
+        
+        if(!filledSlots)return;
+        
+        let slotValues=getSlotValues(filledSlots);
+        
+        console.log(JSON.stringify(slotValues));
+        
+        let speechOutput="Construct Respose message here";
+        this.response.speak(speechOutput);
+        this.emit(':responseReady');
+    }
+    ,
     'AMAZON.HelpIntent': function () {
         const speechOutput = HELP_MESSAGE;
         const reprompt = HELP_REPROMPT;
