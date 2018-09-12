@@ -2,7 +2,7 @@
 const Alexa = require('alexa-sdk');
 const mysql=require('mysql');
 
-const APP_ID = 'amzn1.ask.skill.61979110-12ee-4c17-a23b-cc845bff407c';
+const APP_ID = 'appID here';
 
 const HELP_MESSAGE = 'What can I help you with?';
 const HELP_REPROMPT = 'What can I help you with?';
@@ -15,7 +15,7 @@ const handlers = {
         this.emit(':responseReady');
     },
     //define your intents here
-    
+
     'AMAZON.HelpIntent': function () {
         const speechOutput = HELP_MESSAGE;
         const reprompt = HELP_REPROMPT;
