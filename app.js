@@ -1,8 +1,10 @@
 'use strict';
 const Alexa = require('alexa-sdk');
+const mysql=require('mysql');
+
 const APP_ID = 'amzn1.ask.skill.61979110-12ee-4c17-a23b-cc845bff407c';
 
-const HELP_MESSAGE = 'You can say tell me a space fact, or, you can say exit... What can I help you with?';
+const HELP_MESSAGE = 'What can I help you with?';
 const HELP_REPROMPT = 'What can I help you with?';
 const STOP_MESSAGE = 'Goodbye!';
 
@@ -17,7 +19,9 @@ const handlers = {
             let result=false;
             let slots=event.request.intent.slots;
             
-            if(slots.quantity.value && slots.pizzaType.value && slots.pizzaSize.value && event.request.intent.confirmationStatus!="NONE"){
+            //Slots and confirmation
+             
+            if(slots && event.request.intent.confirmationStatus!="NONE"){
                 result=true;
             }
             
