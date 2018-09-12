@@ -1,15 +1,15 @@
 'use strict';
 const Alexa = require('alexa-sdk');
-const APP_ID = 'amzn1.ask.skill.61979110-12ee-4c17-a23b-cc845bff407c';
+const APP_ID = 'skill ID here';
 
-const HELP_MESSAGE = 'You can say tell me a space fact, or, you can say exit... What can I help you with?';
+const HELP_MESSAGE = 'What can I help you with?';
 const HELP_REPROMPT = 'What can I help you with?';
 const STOP_MESSAGE = 'Goodbye!';
 
 
 const handlers = {
     'LaunchRequest': function () {
-        this.response.speak('Welcome to {Application Name}');
+        this.response.speak('Welcome to {Application Name}').listen();
         this.emit(':responseReady');
     },
     'IntentName': function(){
